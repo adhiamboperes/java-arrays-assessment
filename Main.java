@@ -16,11 +16,18 @@ public class Main {
                 inputList.add(line[i].trim());
             }
             System.out.println(inputList);
-            getWordsPerLetter(inputList);
+            printWordsPerAlphabet(inputList);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
 
+    }
+
+    private static void printWordsPerAlphabet(List<String> fruits){
+        HashMap<Character, Integer> fruitsMap = getWordsPerLetter(fruits);
+        fruitsMap.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        });
     }
 
     private static HashMap<Character, Integer> getWordsPerLetter(List<String> fruits) {
