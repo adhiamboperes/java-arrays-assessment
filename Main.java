@@ -4,9 +4,8 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
-
+    private static List<String> inputList = new ArrayList<String>();
     public static void main(String[] args) {
-        List<String> inputList = new ArrayList<String>();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -22,16 +21,20 @@ public class Main {
             for (int i = 0; i < line.length; i++) {
                 inputList.add(line[i].trim());
             }
+            chooseOutputType(outputChoice, inputList);
 
-            if (outputChoice == 1) {
-                printNumberOfWordsPerLetter(inputList);
-            } else {
-                printWordsAndNumberPerLetter(inputList);
-            }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
 
+    }
+
+    public static void chooseOutputType(int choice, List<String> list) {
+        if (choice == 1) {
+            printNumberOfWordsPerLetter(list);
+        } else {
+            printWordsAndNumberPerLetter(list);
+        }
     }
 
     private static void printNumberOfWordsPerLetter(List<String> fruits) {
